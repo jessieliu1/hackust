@@ -1,0 +1,13 @@
+*~
+*.log
+*.egg-info/
+*.db
+*.pyc
+*.sw*
+*.vagrant
+.DS_Store
+__pycache__/
+env/
+var/
+EOF
+html/
