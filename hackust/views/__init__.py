@@ -1,1 +1,1 @@
-import hackust.views.index 
+import hackust.views.routes 
