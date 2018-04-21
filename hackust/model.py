@@ -42,12 +42,28 @@ def query_db(query, args=(), one=False):
 
 @hackust.app.route('/query/')
 def show_receipts():
-    connection = get_db()
 
     receipt_id = flask.request.args.get("receipt_id", default=None, type=int)
+    num_receipts = flask.request.args.get("num_receipts", default=None, type=int)
+    if num_receipts:
+        last_receipt_id = query_db("Select MAX(receipt_id) AS 'receipt_id' FROM receipt")[0]['receipt_id']
+        receipts = []
+        i = 0
+        while i != num_receipts and last_receipt_id != -1:
+            receipt = query_db("Select * from receipt where receipt_id=?", (last_receipt_id,))
+            if receipt:
+                receipt[0]["items"] = query_db("Select name, price from item where receipt_id=?", (last_receipt_id,))
+                receipts.append(receipt)
+                i += 1
+            last_receipt_id -= 1
+        return flask.jsonify(receipts)
+
+
     if receipt_id:
-        items = query_db("Select name, price from item where receipt_id=?", (receipt_id,))
-        return flask.jsonify(items)
+        receipt = query_db("Select * from receipt where receipt_id=?", (receipt_id,))
+        receipt[0]["items"] = query_db("Select name, price from item where receipt_id=?", (receipt_id,))
+
+        return flask.jsonify(receipt[0])
 
     receipts = []
 
@@ -68,4 +84,21 @@ def show_receipts():
 
     return flask.jsonify(receipts)
 
+def insert_receipts(receipts):
+    last_receipt_id = query_db("Select MAX(receipt_id) AS 'receipt_id' FROM receipt")[0]['receipt_id']
+    for receipt in receipts:
+        print("Inserting\n")
+        print(receipt)
+        print("date: ")
+        print(str(receipt["date"]))
+        print("Last receipt id")
+        print(last_receipt_id)
+        if not receipt["date"]:
+            receipt["date"] = datetime.datetime.now().date()
+            receipt["time"] = datetime.datetime.now().time()
+        #receipt["total"] = line.translate(None, '!@#$')
 
+        query_db("Insert into receipt(receipt_id, store, purchase_date, purchase_time) VALUES(?, ?, ?, ?)",
+            (last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]),))
+        last_receipt_id += 1
+    return flask.redirect(flask.url_for('show_index'))

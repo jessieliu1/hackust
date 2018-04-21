@@ -166,11 +166,14 @@ def get_files(folder):
     return [f for f in files if os.path.isfile(f)]
 
 def ocr_receipts(config, receipt_files):
+    receipts = []
     for receipt_path in receipt_files:
         with open(receipt_path) as receipt:
             receipt = Receipt(config, receipt.readlines())
             print(receipt_path, receipt.date, receipt.time, receipt.store, receipt.total)
-            return (receipt_path, receipt.date, receipt.time, receipt.store, receipt.total)
+            receipts.append({"receipt_path": receipt_path, "date": receipt.date, "time": receipt.time, "store": receipt.store, "total": receipt.total})
+            
+    return receipts
 
 def main():
     config = read_config()

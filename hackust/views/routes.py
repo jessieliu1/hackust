@@ -2,6 +2,7 @@ import flask
 import hackust
 from hackust import importer as importer
 from hackust import parser
+from hackust import model
 import os
 from werkzeug.utils import secure_filename
 
@@ -24,14 +25,21 @@ def perform_ocr_on_recipt(image_dir):
     import_photos()
 
 # TODO: 
-def parse_receipt_string(receipt):
+def parse_receipt_string(receipts):
     return True
+
+
+def edit_receipt(receipts):
+    # TODO:
+    # implement structure to edit the receipts
+    model.insert_receipts(receipts)
 
 @hackust.app.route('/parse_text')
 def parse_text():
     config = parser.read_config()
     receipts = parser.get_files(config.receipts_path) #might need to change this
-    parser.ocr_receipts(config, receipts)
+    parsed = parser.ocr_receipts(config, receipts)
+    edit_receipt(parsed)
     return flask.redirect(flask.url_for('show_index'))
 
 # may need additional route for checking completion
