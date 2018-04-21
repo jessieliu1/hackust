@@ -1,2 +1,3 @@
 pip install --upgrade pip
 pip install -e .
+npm install .
