@@ -18,7 +18,7 @@ def prepare_folders():
     """
 
     for folder in [
-    TMP_FOLDER, OUTPUT_FOLDER
+    TMP_FOLDER, INPUT_FOLDER, OUTPUT_FOLDER
     ]:
         if not os.path.exists(folder):
             os.makedirs(folder)
