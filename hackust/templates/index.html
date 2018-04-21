@@ -3,42 +3,47 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <link rel="stylesheet" href="static/css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Lato:400,400i,700|Montserrat:400,600,700,800" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="static/js/materialize-settings.js" type="text/javascript" charset="utf-8"></script>
         <title>Receiption</title>
     </head>
     <body>
-        <nav>
-            <div class="nav-wrapper cyan lighten-7">
-                <a href="#" class="brand-logo">Receiption</a>
+        <nav class="nav-extended">
+            <div class="nav-wrapper indigo darken-4">
+                <a href="#" class="brand-logo center">my billz</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                 </ul>
             </div>
+            <div class="nav-content">
+              <ul class="tabs indigo darken-4">
+                <li class="tab"><a href="#upload_receipts">upload new receipts</a></li>
+                <li class="tab"><a href="#past_receipts">view past receipts</a></li>
+              </ul>
+            </div>
+
         </nav>
         <br />
-        <div class="row">
-            <div class="col s6">
-                <div id="form-card" class="card blue-grey lighten-5">
-                    <p>Upload New Receipt</p>
+            <div class="container">
+                <div id="form-card" class="card indigo darken-3"> 
+                    <p>Upload a New Receipt</p>
                     <form action="/upload" method="post" enctype=multipart/form-data>
                         <div class="file-field input-field">
-                            <div class="btn amber accent-2">
-                                <span class="grey-text text-darken-2">Choose File</span>
+                            <div class="btn-small">
+                                <span class="white-text">Choose File</span>
                                 <input type="file" name="file">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
+                                <input class="file-path validate white-text" type="text">
                             </div>
-                            <button id="photo-submit" class="btn grey-text text-darken-2 amber accent-2" type=submit value=Upload>Upload
+                            <button id="photo-submit" class="btn-small white-text" type=submit value=Upload>Upload
                             </button>
                         </div>
                     </form>
-                </div>
-            </div> 
-        </div>
-        <div class="row">
-            <div class="col s6">
+                </div> 
+            </div>
+        <div class="container">
                 <div id="receipts-form-card" class="card blue-grey lighten-5">
                     <p>View Past Receipts</p>
                     <form action="#" method="post" enctype=multipart/form-data>

@@ -1,13 +1,53 @@
 body {
+    font-family: 'Karla', sans-serif;
     height: 100%;
     width: 100%;
+    background-color: #283593;
+}
+
+nav {
+    height: 64px;
+    line-height: 64px;
 }
 
 nav .brand-logo {
+    font-family: 'Karla', sans-serif;
+    font-size: 300%;
     padding-left: 20px;
 }
 
+.tabs .tab {
+    font-family: 'Karla', sans-serif;
+}
+
+.tabs .tab a.active {
+  color: #FFFFFF;
+  text-transform: none;
+}
+
+.tabs .tab a:hover {
+  color: #F2DC5D;
+  text-transform: none;
+}
+
+.tabs .tab a {
+  color: #FFFFFF;
+  text-transform: none;
+}
+
+.input-field input[type=text]:focus + label {
+    color: #FFFFFF;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
 #form-card {
+    font-family: 'Karla', sans-serif;
+    color: #FFFFFF;
     padding: 10px;
     min-height: 180px;
 }
