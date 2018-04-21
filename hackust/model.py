@@ -39,7 +39,6 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (result[0] if result else None) if one else result
 
-
 @hackust.app.route('/query/')
 def show_receipts():
     connection = get_db()
