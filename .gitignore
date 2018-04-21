@@ -14,4 +14,6 @@ other/
 test/
 txt/ 
 hackust/static/uploads/*
+node_modules
+bundle.js
 EOF
