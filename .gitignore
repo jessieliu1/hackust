@@ -10,4 +10,6 @@ __pycache__/
 env/
 var/
 hackust/static/uploads/*
+node_modules
+bundle.js
 EOF
