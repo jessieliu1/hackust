@@ -11,16 +11,25 @@ from difflib import get_close_matches
 
 import yaml
 
-from objectview import ObjectView
-
 from datetime import datetime
+
+class ObjectView(object):
+    """ View objects as dicts """
+
+    def __init__(self, d):
+        """
+        :param d: {}
+            Object data
+        """
+
+        self.__dict__ = d
 
 class Receipt(object):
 
     def __init__(self, config, raw_text):
         """
         config: ObjectView config object
-        raw: array of ocr parsed str lines in the file
+        raw_text: array of ocr parsed str lines in the file
         """
 
         self.config = config
@@ -77,9 +86,15 @@ class Receipt(object):
                         pass
                     else:
                         break
-        return date.date()
+        if date: 
+            return date.date()
+        else:
+            return date
 
     def parse_time(self):
+        """
+        parse times in various formats
+        """
         time_formats = ['%H:%M:%S', '%H:%M', '%I:%M %p']
         time = None
         for line in self.lines: 
@@ -100,9 +115,15 @@ class Receipt(object):
                         pass
                     else:
                         break
-        return time.time()
+        if time: 
+            return time.time()
+        else:
+            return time
 
     def parse_store(self):
+        """
+        match stores to stores in the configuration file
+        """
         for int_accuracy in range(10, 6, -1):
             accuracy = int_accuracy / 10.0
 
@@ -113,6 +134,9 @@ class Receipt(object):
                         return store
 
     def parse_total(self):
+        """
+        attempt to find the total value on the receipt
+        """
         for i in range(0, len(self.lines)):
             for word in self.lines[i].split():
                 word = word.strip()
@@ -128,7 +152,7 @@ class Receipt(object):
         return None
 
 
-def read_config(file="config.yml"):
+def read_config(file="hackust/config.yml"):
         stream = open(os.path.join(os.getcwd(), file), "r")
         docs = yaml.safe_load(stream)
         return ObjectView(docs)
@@ -146,6 +170,7 @@ def ocr_receipts(config, receipt_files):
         with open(receipt_path) as receipt:
             receipt = Receipt(config, receipt.readlines())
             print(receipt_path, receipt.date, receipt.time, receipt.store, receipt.total)
+            return (receipt_path, receipt.date, receipt.time, receipt.store, receipt.total)
 
 def main():
     config = read_config()
