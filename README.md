@@ -16,6 +16,12 @@ chmod +x bin/setup
 ./bin/setup
 ```
 
+# Compile front-end source Code
+1. Run webpack to compile React into Javascript code. This should create a bundle.js file.
+```bash
+./node_modules/.bin/webpack
+```
+
 
 # Running the Application
 Although you can run the application right now, not all functionality will work unless you 
