@@ -6,9 +6,13 @@
 *.sw*
 *.vagrant
 .DS_Store
+.Trash-1000/
 __pycache__/
 env/
 var/
+other/
+test/
+txt/ 
 hackust/static/uploads/*
 node_modules
 bundle.js

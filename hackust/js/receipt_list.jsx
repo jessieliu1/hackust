@@ -9,15 +9,14 @@ class ReceiptList extends React.Component {
     this.state = {receipts: []};
   }
 
+
   componentDidMount() {
-    fetch("query/0/", { credentials: 'same-origin' })
+    fetch('query/', { credentials: 'same-origin' })
       .then((response) => {
-      console.log(response);
         if(!response.ok) throw Error(response.statusText);
         return response.json();
       })   
     .then((data) => {
-      console.log(data);
       this.setState({receipts: data,});
     })
     .catch(error => console.log(error)); 
@@ -26,8 +25,9 @@ class ReceiptList extends React.Component {
   }
 
   render() {
+    console.log(this.state.receipts.length)
     const receipts = this.state.receipts.map(p =>
-        <Receipt store={p.store} price={0}/>,
+        <Item name={p.store} price={'0'}/>
         );
 
     return (
