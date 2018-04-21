@@ -2,3 +2,29 @@ body {
     height: 100%;
     width: 100%;
 }
+
+nav .brand-logo {
+    padding-left: 20px;
+}
+
+#form-card {
+    padding: 10px;
+    min-height: 180px;
+}
+
+#receipts-form-card {
+    padding: 10px;
+    min-height: 180px;
+}
+
+#photo-submit {
+}
+
+div .file-path-wrapper {
+}
+
+.center-block {
+    display: block;
+    margin: 0 auto;
+}
+
