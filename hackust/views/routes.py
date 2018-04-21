@@ -1,6 +1,7 @@
 import flask
 import hackust
 from hackust import importer as importer
+from hackust import parser
 import os
 from werkzeug.utils import secure_filename
 
@@ -17,7 +18,6 @@ def allowed_file(filename):
     print("Incorrect file type")
     return False
 
-
 # TODO: 
 # Write string output of ocr to text file
 def perform_ocr_on_recipt(image_dir):
@@ -29,6 +29,9 @@ def parse_receipt_string(receipt):
 
 @hackust.app.route('/parse_text')
 def parse_text():
+    config = parser.read_config()
+    receipts = parser.get_files(config.receipts_path) #might need to change this
+    parser.ocr_receipts(config, receipts)
     return flask.redirect(flask.url_for('show_index'))
 
 # may need additional route for checking completion
@@ -50,8 +53,8 @@ def upload_file_and_parse():
         implement OCR and receipt parsing logic here
         """
         importer.read_images()
-    
-    return flask.redirect(flask.url_for('show_index'))
+
+    return flask.redirect(flask.url_for('parse_text'))
     # TODO: This endpoint should delete the uploaded file after parsing the OCR output
     # Also will Persist the information in database, and perform whatever analysis necessary
 
