@@ -8,5 +8,7 @@ setup(
         install_requires=[
             'Flask',
             'Flask-SQLAlchemy',
+            'pytesseract',
+            'tesseract',
             ],
         )
