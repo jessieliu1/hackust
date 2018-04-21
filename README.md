@@ -10,7 +10,21 @@ python3 -m venv env
 ```bash
 source env/bin/activate
 ```
-3. Install required modules 
+3. Upgrade python stuff
+```bash
+pip install --upgrade pip setuptools wheel
+```
+4. Install the node virtual environment
+```bash
+pip install nodeenv
+nodeenv --python-virtualenv
+```
+5. Reactivate virtual environment
+```bash
+deactivate
+source env/bin/activate
+```
+6. Install required modules 
 ```bash
 chmod +x bin/setup
 ./bin/setup
@@ -18,6 +32,7 @@ chmod +x bin/setup
 
 # Compile front-end source Code
 1. Run webpack to compile React into Javascript code. This should create a bundle.js file.
+This should happen after modifying .jsx code.
 ```bash
 ./node_modules/.bin/webpack
 ```
