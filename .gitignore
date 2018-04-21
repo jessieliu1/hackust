@@ -9,5 +9,5 @@
 __pycache__/
 env/
 var/
+hackust/static/uploads/*
 EOF
-html/
