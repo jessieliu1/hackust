@@ -1,9 +1,11 @@
-#IN BASE:
-#sqllite3 hackust.sqlite3
-#.read input.sql
-#.exit
-#mkdir var
-#mv hackust.sqlite3 var/
+/*
+IN BASH:
+sqllite3 hackust.sqlite3
+.read input.sql
+.exit
+mkdir var
+mv hackust.sqlite3 var/
+*/
 
 create table Receipt(
 receipt_id INT(10),
