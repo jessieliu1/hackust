@@ -2,10 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-# insert DB name, create with sqlite3
-app.config['SQLALCHEMY_DATABASE_URI'] = '' 
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-app.config['UPLOAD_FOLDER'] = 'static/uploads/'
+app.config.from_object('hackust.config')
 
 db = SQLAlchemy(app)
 
