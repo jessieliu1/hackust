@@ -1,5 +1,7 @@
 import flask
 import hackust
+import os
+from werkzeug.utils import secure_filename
 
 @hackust.app.route('/', methods=['GET'])
 def show_index():
@@ -8,8 +10,12 @@ def show_index():
         return flask.render_template("index.html", **context)
 
 # TODO: Complete this
-def allowed_files(filename):
-    return True
+def allowed_file(filename):
+    if filename[-4::] == ".jpg" or filename[-4::] == ".png":
+        return True
+    print("Incorrect file type")
+    return False
+
 
 # TODO: 
 # Return the string output of pytesseract after running it
@@ -24,16 +30,24 @@ def parse_receipt_string(receipt):
 @hackust.app.route('/upload', methods=['POST'])
 def upload_file_and_parse():
     # first check if file has been uploaded
-    if 'file' not in request.files:
-        return redirect(flask.url_for('show_index'))
-    file = request.files['file']
+    if 'file' not in flask.request.files:
+        print('No file part')
+        return flask.redirect(flask.url_for('show_index'))
+    file = flask.request.files['file']
     if file.filename == '':
-        flash('No selected file')
-        return redirect(flask.url_for('show_index'))
+        print('No selected file')
+        return flask.redirect(flask.url_for('show_index'))
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return redirect(url_for('show_index'))
+        filepath = os.path.join(hackust.app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        """
+        implement OCR and receipt parsing logic here
+        """
+        os.remove(filepath)
+        return flask.redirect(flask.url_for('show_index'))
+    
+    return flask.redirect(flask.url_for('show_index'))
     # TODO: This endpoint should delete the uploaded file after parsing the OCR output
     # Also will Persist the information in database, and perform whatever analysis necessary
 
