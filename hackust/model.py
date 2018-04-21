@@ -40,12 +40,19 @@ def query_db(query, args=(), one=False):
     return (result[0] if result else None) if one else result
 
 
-@hackust.app.route('/query/<int:day>/')
-def show_receipts(day):
+@hackust.app.route('/query/')
+def show_receipts():
     connection = get_db()
 
+    receipt_id = flask.request.args.get("receipt_id", default=None, type=int)
+    if receipt_id:
+        items = query_db("Select name, price from item where receipt_id=?", (receipt_id,))
+        return flask.jsonify(items)
+
     receipts = []
-    if day is 0:
+
+    day = flask.request.args.get("day", default=None, type=int)
+    if not day:
         receipts = query_db("Select * from receipt")
     else:
         early_date = flask.request.args.get("early_date", default=None, type=str)
