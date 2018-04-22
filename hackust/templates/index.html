@@ -7,7 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="static/js/materialize-settings.js" type="text/javascript" charset="utf-8"></script>
-        <title>Receiption</title>
+        <title>my billz</title>
     </head>
     <body>
         <nav class="nav-extended">
@@ -46,21 +46,19 @@
         <div class="container">
                 <div id="receipts-form-card" class="card blue-grey lighten-5">
                     <p>View Past Receipts</p>
-                    <form action="#" method="post" enctype=multipart/form-data>
                         <div class="input-field col s12">
-                            <select>
+                            <select id="num_receipts_select">
                                 <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
                                 <option value="5">5</option>
-                                <option value="6">6</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="300">300</option>
                             </select>
                             <label>Number of Receipts</label>
                         </div>
                         <button id="receipts-submit" class="btn grey-text text-darken-2 amber accent-2" type=submit value=Upload>Upload
                         </button>
-                    </form>
                 </div>
             </div> 
         </div>
