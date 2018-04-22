@@ -3,6 +3,7 @@ import sqlite3
 import flask
 import hackust
 import datetime
+import re
 
 
 
@@ -35,6 +36,8 @@ def get_db():
 def query_db(query, args=(), one=False):
     """Template functions for executing sql queries upon database."""
     cur = get_db().execute(query, args)
+    print("HERE")
+    print(query, args)
     result = cur.fetchall()
     cur.close()
     return (result[0] if result else None) if one else result
@@ -86,18 +89,38 @@ def show_receipts():
 def insert_receipts(receipts):
     last_receipt_id = query_db("Select MAX(receipt_id) AS 'receipt_id' FROM receipt")[0]['receipt_id']
     for receipt in receipts:
+
+        if not receipt["date"]:
+            receipt["date"] = datetime.datetime.now().date()
+            receipt["time"] = datetime.datetime.now().time()
+
         print("Inserting\n")
         print(receipt)
         print("date: ")
         print(str(receipt["date"]))
         print("Last receipt id")
         print(last_receipt_id)
-        if not receipt["date"]:
-            receipt["date"] = datetime.datetime.now().date()
-            receipt["time"] = datetime.datetime.now().time()
-        #receipt["total"] = line.translate(None, '!@#$')
+        if receipt["total"]:
+            receipt["total"] = re.sub('[!@#$]', '', str(receipt["total"]))
+        else:
+            receipt["total"] = 0
 
-        query_db("Insert into receipt(receipt_id, store, purchase_date, purchase_time) VALUES(?, ?, ?, ?)",
-            (last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]),))
+        """query_db("Insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total) VALUES(?, ?, ?, ?, ?, ?, ?)",
+            (last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"]),))"""
+        #get_db().execute("Insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total) VALUES(?, ?, ?, ?, ?, ?, ?)", (last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"]),))
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute("""
+            insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total)
+            values ('{}', '{}', '{}', '{}', '{}', '{}', '{}')
+            """.format(last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"])))
+        cursor.close()
+
+        print("attempted to insert")
+        print("""
+            insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total)
+            values ({}, '{}', '{}', '{}', {}, '{}', {})
+            """.format(last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, "Food", float(receipt["total"])))
+        #print((last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"]),))
         last_receipt_id += 1
     return flask.redirect(flask.url_for('show_index'))
