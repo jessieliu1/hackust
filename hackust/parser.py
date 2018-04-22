@@ -140,6 +140,7 @@ class Receipt(object):
         for i in range(0, len(self.lines)):
             for word in self.lines[i].split():
                 word = word.strip()
+                print(word)
                 if word in self.config.sum_keys: 
                     line = self.lines[i].replace(",", ".")
                     sum_float = re.search(self.config.sum_format, line)
@@ -172,7 +173,8 @@ def ocr_receipts(config, receipt_files):
             receipt = Receipt(config, receipt.readlines())
             print(receipt_path, receipt.date, receipt.time, receipt.store, receipt.total)
             receipts.append({"receipt_path": receipt_path, "date": receipt.date, "time": receipt.time, "store": receipt.store, "total": receipt.total})
-            
+        os.remove(receipt_path)    
+
     return receipts
 
 def main():
