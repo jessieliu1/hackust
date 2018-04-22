@@ -11,11 +11,19 @@ stores:
       - b i g g b y
   Target:
       - target
+  Dicks Sporting Goods:
+      - Dick's Sporting Goods
+      - Dicks Sporting Goods
+      - Sporting Goods
+  Spartys Wonders:
+      - Sparty's Wonders
+      - Wonders
 
 # Sum keys roughly ordered by likelihood.
 sum_keys:
   - total
   - payment
+  - Sale
 
 sum_format: '(\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})|(\$\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})'
 
