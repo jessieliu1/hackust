@@ -18,12 +18,55 @@ stores:
   Spartys Wonders:
       - Sparty's Wonders
       - Wonders
+  Aroma Cafe:
+      - AROMA CAFE
+  Jimmy Johns:
+      - jimmy
+      - johns
+  Starbucks:
+      - starbucks
+
+  Downtown Parking LLC:
+      - Downtown Parking LLC
+
+  Lauren Carande:
+      - LAUREN CARANDE
+      - L A U R E N  C A R A N D E
+      - CARANDE
+      - C A R A N D E
+  
+  Walmart:
+      - Walmart
+      - WaImart
+
+  Stonewood Grill And Tavern:
+      - STONEWOOD
+      - S T O N E W O O D
+      - GRILL & TAVERN
+      - G R I L L & T A V E R N
+      - GROUPER
+      - FILET
+      - MUSSELS
+
+
+  Lorem Shop:
+      - LOREM SHOP
+      - L O R E M S H O P
+      - euis
+      - Knonuy
+      - magna
+      - dolore
+
+
+
+
 
 # Sum keys roughly ordered by likelihood.
 sum_keys:
   - total
   - payment
-  - Sale
+  - amount
+  - tendered
 
 sum_format: '(\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})|(\$\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})'
 
