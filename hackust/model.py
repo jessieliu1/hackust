@@ -104,6 +104,8 @@ def insert_receipts(receipts):
             receipt["total"] = re.sub('[!@#$]', '', str(receipt["total"]))
         else:
             receipt["total"] = 0
+        if last_receipt_id == None:
+            last_receipt_id = -1
 
         """query_db("Insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total) VALUES(?, ?, ?, ?, ?, ?, ?)",
             (last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"]),))"""
