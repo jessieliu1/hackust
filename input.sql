@@ -28,7 +28,7 @@ price decimal(10,2),
 PRIMARY KEY(receipt_id, name, price),
 FOREIGN KEY(receipt_id) references Receipt on delete cascade
 );
-
+/*
 INSERT INTO RECEIPT(receipt_id, store, purchase_date, purchase_time, card, tag, total) VALUES
 (0, "Uraban Outfit", "2015-9-1", "16:7:00", 7803, "Bills", 73.21),
 (1, "HKUST", "2018-10-12", "16:9:00", 0022, "Clothing", 97.44),
@@ -1092,5 +1092,5 @@ INSERT INTO ITEM(receipt_id, name, price) VALUES
 (299, "Water", 24.41),
 (299, "Ticket", 20.29),
 (299, "Box", 30.30);
-
+*/
 
