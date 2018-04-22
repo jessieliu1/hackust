@@ -114,6 +114,7 @@ def insert_receipts(receipts):
             insert into receipt(receipt_id, store, purchase_date, purchase_time, card, tag, total)
             values ('{}', '{}', '{}', '{}', '{}', '{}', '{}')
             """.format(last_receipt_id + 1, receipt["store"], str(receipt["date"]), str(receipt["time"]), None, None, float(receipt["total"])))
+        conn.commit()
         cursor.close()
 
         print("attempted to insert")
