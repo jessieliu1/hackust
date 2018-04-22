@@ -6,11 +6,16 @@ body {
 }
 
 nav {
+    font-family: 'Karla', sans-serif;
     height: 64px;
     line-height: 64px;
 }
 
-nav .brand-logo {
+.nav .nav-extended {
+    font-family: 'Karla', sans-serif;
+}
+
+.nav .brand-logo {
     font-family: 'Karla', sans-serif;
     font-size: 300%;
     color: #212121;
