@@ -33,6 +33,41 @@ stores:
   No Thai:
       - thai
 
+  Downtown Parking LLC:
+      - Downtown Parking LLC
+
+  Lauren Carande:
+      - LAUREN CARANDE
+      - L A U R E N  C A R A N D E
+      - CARANDE
+      - C A R A N D E
+  
+  Walmart:
+      - Walmart
+      - WaImart
+
+  Stonewood Grill And Tavern:
+      - STONEWOOD
+      - S T O N E W O O D
+      - GRILL & TAVERN
+      - G R I L L & T A V E R N
+      - GROUPER
+      - FILET
+      - MUSSELS
+
+
+  Lorem Shop:
+      - LOREM SHOP
+      - L O R E M S H O P
+      - euis
+      - Knonuy
+      - magna
+      - dolore
+
+
+
+
+
 # Sum keys roughly ordered by likelihood.
 sum_keys:
   - total
