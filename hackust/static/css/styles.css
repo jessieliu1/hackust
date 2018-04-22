@@ -13,25 +13,27 @@ nav {
 nav .brand-logo {
     font-family: 'Karla', sans-serif;
     font-size: 300%;
+    color: #212121;
     padding-left: 20px;
 }
 
 .tabs .tab {
     font-family: 'Karla', sans-serif;
+    color: #212121;
 }
 
 .tabs .tab a.active {
-  color: #FFFFFF;
+  color: #212121;
   text-transform: none;
 }
 
 .tabs .tab a:hover {
-  color: #F2DC5D;
+  color: #4527a0;
   text-transform: none;
 }
 
 .tabs .tab a {
-  color: #FFFFFF;
+  color: #212121;
   text-transform: none;
 }
 
@@ -45,11 +47,16 @@ nav .brand-logo {
     box-shadow: 0 1px 0 0 #000;
 }
 
-#form-card {
+.card {
     font-family: 'Karla', sans-serif;
     color: #FFFFFF;
-    padding: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
     min-height: 180px;
+}
+
+.subtext {
+    color: #e8eaf6;
 }
 
 #receipts-form-card {
@@ -69,7 +76,7 @@ div .file-path-wrapper {
 }
 
 #receipts_list p {
-  font-size: 20px;  
+  font-size: 15px;  
 }
 
 .center-block {

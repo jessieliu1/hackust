@@ -38,8 +38,8 @@ class ReceiptList extends React.Component {
         );
 
     return (
-        <div id="receipts_list" className="container card card blue-grey lighten-5">
-          <h3>Past Receipts</h3>
+        <div id="receipts_list" className="container card card indigo darken-3">
+          <h5>Past Receipts</h5>
           {receipts}
         </div>
         );

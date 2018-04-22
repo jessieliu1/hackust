@@ -17,7 +17,7 @@ class Receipt extends React.Component {
     let price = this.state.price;
 
     return (
-        <p>Name: <span className="pink-text text-accent-2">{name}</span>, Price:<span className="purple-text text-accent-2"> {price} </span> </p> 
+        <p>Name: <span className="teal-text text-lighten-2">{name}</span>, Price:<span className="teal-text text-lighten-2"> {price} </span> </p> 
         );
   };
 }
