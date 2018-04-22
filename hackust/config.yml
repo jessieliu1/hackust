@@ -18,6 +18,9 @@ stores:
   Spartys Wonders:
       - Sparty's Wonders
       - Wonders
+  Spartys Engineering:
+      - Sparty's Engineering
+      - Engineering
   Aroma Cafe:
       - AROMA CAFE
   Jimmy Johns:
@@ -25,6 +28,10 @@ stores:
       - johns
   Starbucks:
       - starbucks
+  Shell:
+      - shell
+  No Thai:
+      - thai
 
   Downtown Parking LLC:
       - Downtown Parking LLC
@@ -67,6 +74,7 @@ sum_keys:
   - payment
   - amount
   - tendered
+  - usd
 
 sum_format: '(\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})|(\$\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})'
 
