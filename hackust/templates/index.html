@@ -2,15 +2,14 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+        <link href="static/css/c3.css" rel = "stylesheet">
         <link rel="stylesheet" href="static/css/styles.css">
-        <link href="https://fonts.googleapis.com/
-        css?family=Karla:400,400i,700,700i|Lato:400,400i,700|Montserrat:400,600,700,800" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="static/js/materialize-settings.js" type="text/javascript" charset="utf-8"></script>
         <title>Receiption</title>
 		
-		<link href="static/css/c3.css" rel = "stylesheet">
 		<script src="{{url_for('static', filename='js/d3.min.js')}}" charset = "utf-8"></script>
 		<script src="{{url_for('static',filename='js/c3.min.js')}}"></script>
 
@@ -31,6 +30,30 @@
 
         </nav>
         <br />
+            <div class = "container">
+                <div id="chart"></div>
+                    <script>
+                    var chart = c3.generate({
+                        data: {
+                            x: 'x',
+                    //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+                            columns: [
+                                ['x', '2017-01-01', '2017-01-02', '2017-01-03', '2017-01-04', '2017-01-05'],
+                                ['budget', 100, 200, 100, 100, 150, 250],
+                                ['actual spending', 130, 100, 200, 300, 100, 350]
+                            ]
+                        },
+                        axis: {
+                            x: {
+                                type: 'timeseries',
+                                tick: {
+                                    format: '%Y-%m-%d'
+                                }
+                            }
+                        }
+                    });
+                    </script>
+            </div>
             <div class="container">
                 <div id="receipts-upload-card" class="card indigo darken-3"> 
                     <p>Upload a New Receipt</p>
@@ -76,17 +99,7 @@
 
 
 
-	<div id="chart"></div>
-	<script>
-	var chart = c3.generate({
-                data: {
-                        columns: [
-                                ['data1', 30, 200, 100, 400, 150, 250],
-                                ['data2', 50, 20, 10, 40, 15, 25]
-                        ]
-                }
-        });
-	</script>
+
 
 
 

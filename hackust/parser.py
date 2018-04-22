@@ -140,6 +140,7 @@ class Receipt(object):
         for i in range(0, len(self.lines)):
             for word in self.lines[i].split():
                 word = word.strip()
+                print(word)
                 if word in self.config.sum_keys: 
                     line = self.lines[i].replace(",", ".")
                     sum_float = re.search(self.config.sum_format, line)
