@@ -148,6 +148,7 @@ class Receipt(object):
                         return sum_float.group(0)
                     elif (i < len(self.lines) - 1):
                         sum_float = re.search(self.config.sum_format, self.lines[i+1])
+                        print(sum_float)
                         if sum_float:
                             return sum_float.group(0)
         return None

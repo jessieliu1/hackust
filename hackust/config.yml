@@ -18,12 +18,20 @@ stores:
   Spartys Wonders:
       - Sparty's Wonders
       - Wonders
+  Aroma Cafe:
+      - AROMA CAFE
+  Jimmy Johns:
+      - jimmy
+      - johns
+  Starbucks:
+      - starbucks
 
 # Sum keys roughly ordered by likelihood.
 sum_keys:
   - total
   - payment
-  - Sale
+  - amount
+  - tendered
 
 sum_format: '(\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})|(\$\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2})'
 
