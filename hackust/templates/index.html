@@ -8,7 +8,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="static/js/materialize-settings.js" type="text/javascript" charset="utf-8"></script>
-        <title>hmm</title>
+        <title>Receiption</title>
+		
+		<link href="static/css/c3.css" rel = "stylesheet">
+		<script src="{{url_for('static', filename='js/d3.min.js')}}" charset = "utf-8"></script>
+		<script src="{{url_for('static',filename='js/c3.min.js')}}"></script>
+
     </head>
     <body>
         <nav class="nav-extended">
@@ -68,6 +73,25 @@
         <div id="receipt_list">
             
         </div>
+
+
+
+	<div id="chart"></div>
+	<script>
+	var chart = c3.generate({
+                data: {
+                        columns: [
+                                ['data1', 30, 200, 100, 400, 150, 250],
+                                ['data2', 50, 20, 10, 40, 15, 25]
+                        ]
+                }
+        });
+	</script>
+
+
+
+	
+
 
         <script src="static/js/bundle.js" type="text/javascript" charset="utf-8"></script>
     </body>
