@@ -1,5 +1,5 @@
 # Hackust
-Recipt Tracker
+Receipt Tracker
 
 # Setting up the environment (Linux)
 1. Create virtual environment
